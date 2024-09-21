@@ -1,11 +1,13 @@
+
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-center text-gray-300 py-8 px-4">
-      <p className="text-sm">
-          &copy; 2024 Arzaid Food-Hub. All rights reserved.
-        </p> 
-    </footer>
-  );
-};
+    <footer className="bg-[#0f172a] text-center text-white py-9 px-4">
+    <p className="text-md">
+        &copy; 2024 Foodie Hub. All rights reserved.{" "} 
+        <span className="font-bold text-[#22d3ee]">Build by Arzaid</span>
+      </p> 
+  </footer>
+  )
+}
 
-export default Footer;
+export default Footer

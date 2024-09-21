@@ -42,7 +42,8 @@ import { useCartStore } from "@/store/useCartStore";
 import { useThemeStore } from "@/store/useThemeStore";
 
 const Navbar = () => {
-  const { user, loading, logout } = useUserStore();
+  const {loading, logout } = useUserStore();
+  const user=true;
   const { cart } = useCartStore();
   const {setTheme} = useThemeStore();
 
@@ -139,7 +140,8 @@ const Navbar = () => {
 export default Navbar;
 
 const MobileNavbar = () => {
-  const { user, logout, loading } = useUserStore();
+  const { logout, loading } = useUserStore();
+  const user=true;
   const {setTheme} = useThemeStore();
   return (
     <Sheet>
