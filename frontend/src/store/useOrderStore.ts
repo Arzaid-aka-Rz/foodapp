@@ -17,9 +17,6 @@ export const useOrderStore = create<OrderState>()(persist((set => ({
                     'Content-Type': 'application/json'
                 }
             });
-            // Check the URL before redirecting
-const sessionUrl = response.data.session.url;
-console.log("Redirecting to:", sessionUrl); // Log the URL for debugging
             window.location.href = response.data.session.url;
             set({ loading: false });
         } catch (error) {
