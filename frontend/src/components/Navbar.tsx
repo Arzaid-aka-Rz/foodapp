@@ -42,10 +42,10 @@ import { useCartStore } from "@/store/useCartStore";
 import { useThemeStore } from "@/store/useThemeStore";
 
 const Navbar = () => {
-  const {loading, logout } = useUserStore();
-  const user=true;
+  const { loading, user, logout } = useUserStore();
+
   const { cart } = useCartStore();
-  const {setTheme} = useThemeStore();
+  const { setTheme } = useThemeStore();
 
   return (
     <div className="max-w-7xl mx-auto">
@@ -59,24 +59,22 @@ const Navbar = () => {
             <Link to="/profile">Profile</Link>
             <Link to="/order/status">Order</Link>
 
-            {user?.admin && (
-              <Menubar>
-                <MenubarMenu>
-                  <MenubarTrigger>Dashboard</MenubarTrigger>
-                  <MenubarContent>
-                    <Link to="/admin/restaurant">
-                      <MenubarItem>Restaurant</MenubarItem>
-                    </Link>
-                    <Link to="/admin/menu">
-                      <MenubarItem>Menu</MenubarItem>
-                    </Link>
-                    <Link to="/admin/orders">
-                      <MenubarItem>Orders</MenubarItem>
-                    </Link>
-                  </MenubarContent>
-                </MenubarMenu>
-              </Menubar>
-            )}
+            <Menubar>
+              <MenubarMenu>
+                <MenubarTrigger>Dashboard</MenubarTrigger>
+                <MenubarContent>
+                  <Link to="/admin/restaurant">
+                    <MenubarItem>Restaurant</MenubarItem>
+                  </Link>
+                  <Link to="/admin/menu">
+                    <MenubarItem>Menu</MenubarItem>
+                  </Link>
+                  <Link to="/admin/orders">
+                    <MenubarItem>Restaurant Orders</MenubarItem>
+                  </Link>
+                </MenubarContent>
+              </MenubarMenu>
+            </Menubar>
           </div>
           <div className="flex items-center gap-4">
             <div>
@@ -89,8 +87,12 @@ const Navbar = () => {
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
-                  <DropdownMenuItem onClick={()=> setTheme('light')}>Light</DropdownMenuItem>
-                  <DropdownMenuItem onClick={()=> setTheme('dark')}>Dark</DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => setTheme("light")}>
+                    Light
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={() => setTheme("dark")}>
+                    Dark
+                  </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>
@@ -140,9 +142,9 @@ const Navbar = () => {
 export default Navbar;
 
 const MobileNavbar = () => {
-  const { logout, loading } = useUserStore();
-  const user=true;
-  const {setTheme} = useThemeStore();
+  const { logout, user, loading } = useUserStore();
+
+  const { setTheme } = useThemeStore();
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -166,8 +168,12 @@ const MobileNavbar = () => {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem onClick={() => setTheme('light')}>Light</DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setTheme('dark')}>Dark</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setTheme("light")}>
+                Light
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setTheme("dark")}>
+                Dark
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </SheetHeader>
@@ -194,31 +200,28 @@ const MobileNavbar = () => {
             <ShoppingCart />
             <span>Cart (0)</span>
           </Link>
-          {user?.admin && (
-            <>
-              <Link
-                to="/admin/menu"
-                className="flex items-center gap-4 hover:bg-gray-200 px-3 py-2 rounded-lg cursor-pointer hover:text-gray-900 font-medium"
-              >
-                <SquareMenu />
-                <span>Menu</span>
-              </Link>
-              <Link
-                to="/admin/restaurant"
-                className="flex items-center gap-4 hover:bg-gray-200 px-3 py-2 rounded-lg cursor-pointer hover:text-gray-900 font-medium"
-              >
-                <UtensilsCrossed />
-                <span>Restaurant</span>
-              </Link>
-              <Link
-                to="/admin/orders"
-                className="flex items-center gap-4 hover:bg-gray-200 px-3 py-2 rounded-lg cursor-pointer hover:text-gray-900 font-medium"
-              >
-                <PackageCheck />
-                <span>Restaurant Orders</span>
-              </Link>
-            </>
-          )}
+
+          <Link
+            to="/admin/menu"
+            className="flex items-center gap-4 hover:bg-gray-200 px-3 py-2 rounded-lg cursor-pointer hover:text-gray-900 font-medium"
+          >
+            <SquareMenu />
+            <span>Menu</span>
+          </Link>
+          <Link
+            to="/admin/restaurant"
+            className="flex items-center gap-4 hover:bg-gray-200 px-3 py-2 rounded-lg cursor-pointer hover:text-gray-900 font-medium"
+          >
+            <UtensilsCrossed />
+            <span>Restaurant</span>
+          </Link>
+          <Link
+            to="/admin/orders"
+            className="flex items-center gap-4 hover:bg-gray-200 px-3 py-2 rounded-lg cursor-pointer hover:text-gray-900 font-medium"
+          >
+            <PackageCheck />
+            <span>Restaurant Orders</span>
+          </Link>
         </SheetDescription>
         <SheetFooter className="flex flex-col gap-4">
           <div className="flex flex-row items-center gap-2">
